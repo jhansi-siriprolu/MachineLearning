@@ -1,2 +1,2 @@
-# ML-projects
+# SQL Project
 Python projects
