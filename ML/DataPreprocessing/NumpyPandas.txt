@@ -1,0 +1,152 @@
+np.arange(n) - 
+            sequence of numbers from zero to the input number n with 
+            increments of one.
+np.arange(n1,n2)
+            the default of the function is that you want a sequence of numbers from 
+            the first input to the second input with increments of one.
+
+The np.zeros() and np.ones() functions
+            These two functions are excellent resources for creating a placeholder to keep the results of calculations in a loop. 
+
+The np.linspace() function
+This function returns evenly spaced numbers over a specified interval. The function takes three inputs.
+The first two inputs specify the interval, and the third shows the number of elements that the output will have.
+        example: np.linspace(0,1,21)
+
+Slicing Numpy array:
+        my_array[1,:]
+        my_array[1:5,2:4]
+        my_array[1:2,[3,4]]
+
+
+Pandas:
+======================================================
+Step 1: Understand each attribute of dataset.
+Step 2: Check the shape of the dataset.
+Step 3: Check whether the data has any missing values.
+Step 4: Calculate summarizing values for numerical attributes such as mean, median, and standard deviation, and compute all the possible values for categorical attributes.
+Step 5: Visualize the attributes. For numerical attributes, use a histogram or a boxplot, and for categorical ones, use a bar chart.
+---------------------------------------------------------
+step 1: check for txt file of dataset describing attributes
+step2: df.shape
+step 3: df.info()
+step 4: Numeric:
+        df.describe(), 
+        Categorical:
+        for each variable 
+            df.value_counts()
+step 5: Numeric:
+        plt.hist(df[numeric_col]),
+        plt.box(df[numeric_col])
+        Categorical
+        df[cat_col].value_counts().barh()
+
+-----------------------------------------------------------
+Pandas quick Tour:
+        type(df.ColumnName) --> pandas series
+        type(df.loc[3]) --> pandas series
+        
+Each attribute and each row is a series in Dataframe
+The only difference between a column series and a row series is that the index of a column series is the index of the DataFrame, and the index of a row series is the column names.
+df.ColumnName.index
+df.loc[3].index
+
+Accessing Pandas df:
+
+default indices -- iloc
+assigned indices - set_index([list of columns]) --  loc
+4 ways:
+        Examples:
+        df.iloc[2].loc["education"]
+        df.education.loc[100002]
+        df["education"].iloc[2]
+        df.at[10002,"education"]
+Accessing Pandas Series:
+        All the three except the last one .at[] is not applicable
+
+
+
+Pandas df slicing can only be done inside either .loc[] or .iloc[]. The access method, .at[], and the other ways of accessing data do not support slicing. 
+
+df.sort_values('education-num') sorts the DataFrame by education-num. 
+            indices of the sorted adult_df look jumbled up, as they should.
+
+
+adult_df.sort_values('education-num').reset_index()
+            old index is presented as a new column 
+            and that the new index looks as ordered as any newly read dataset.
+
+Boolean masking for filtering a DataFrame
+
+BM = df.education == "PreSchool"
+BM1 = df.age > 50
+BM2 = df.age < 50
+*****************quick functions********************
+.info()
+.columns
+.shape
+.describe()
+.plot.hist()
+.plot.box()
+.unique()
+.value_counts() -- frequency table
+.value_counts(normalize = true) -- relative frequency table
+.value_counts().plot.bar()
+.value_counts().plot.barh() -- horizontal bar chart
+
+****************Apply*****************************
+Applying a function to a Column in Dataframe
+df.ColumnName.apply(funct1)
+func1 is applied to all values in column
+
+Applying a function to a DataFrame
+df.apply(lambda row: row.ColumnName1 - row.ColumnName2, axis = 1)
+
+
+******************Groupby***************************
+
+Normally, you would want to group your data by categorical attributes.
+Example:
+        count the number of rows per marital_status category
+        df.groupby("marital_status).size()
+
+        groups the data based on both the marital_status and sex columns
+        df.groupby(['marital_status','sex']).size()
+
+Aggregate functions
+.count - No of non-null observations
+.sum(), .mean(), .median, .mode
+.min
+.max
+.mad - Mean Absolute Deviation
+.std - Unbiased standard deviation
+.var() - unbiased variance
+.sem() - unbiased standard error of mean.
+.kurt() - Unbiased Kurtosis
+.skew() - unbiased skewness
+
+Example:
+        df.groupby(['marital_status','sex']).age.median()
+
+Pandas multi-level indexing:
+
+grp_df = df.groupby(['marital_status','sex']).age.median()
+print(grp.index)
+
+stack and unstack
+executing .unstack() more than once will, one by one, push the outer level of the index to the columns.
+stack does the opposite
+
+Pandas pivot and melt functions
+wide form(many columns)
+Long form(uses one index column to include all relevant information)
+.melt() function - reshape a dataset from wide --> long
+        1. id_vars: identifying columns like index.
+        2. value_vars: names of columns that needs to be melt.
+        3. var_name: column name to identify the old columns in wide format
+        4. value_name: column name for values of those columns in wide format.
+
+.pivot() function - reshapes a DataFrame from the long form to the wide form
+        1. index: This input takes what will be the index of the wide form.
+        2. columns: This input takes the columns of the long form that will be expanded to create the columns for the wide form.
+        3. values: This input takes the column in which the long form keeps the values.
