@@ -1,0 +1,13 @@
+Types of data values
+    Analytics standpoint
+        4 major types: 
+        ** nominal, ordinal -- Categorical
+        1. nominal attributes do not contain any other information than just names.
+        Ex: Gender, hair color, skin color, eye color, marital status and occupation
+        2. Ordinal Attributes: well-recognized order between all of them
+        ordinal attributes do not contain information that allows for 
+        interval comparison between data objects.
+        Ex: Course letter Grades, survey rankings, Professional ranking
+                       
+        ** interval-scaled, and ratio-scaled -- Numeric
+        1.  
