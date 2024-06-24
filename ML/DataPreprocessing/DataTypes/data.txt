@@ -10,4 +10,104 @@ Types of data values
         Ex: Course letter Grades, survey rankings, Professional ranking
                        
         ** interval-scaled, and ratio-scaled -- Numeric
-        1.  
+        
+        Binary attributes are nominal attributes with only two possibilities.
+        symmetric:
+        Equally probable 
+        asymmetric:
+        The rare possibility of a binary attribute is denoted by a positive (or one)
+
+
+Statistical information for categorical attributes
+Statistical information for Numeric attributes: 
+            different range of values --> Normalization
+            Variance --> if attribute1.var() > arrtribute2.var()
+                                                and both the attributes are in the same range, then 
+                                                attribute1 is more statistically signififcant than attribute2
+
+Data Redundancy -> Use correlation 
+                if a1 and a2 have correlation of -1(<=0.7) or +1(>=0.7) 
+                shows that the two attributes are showing similar statistical 
+                information and perhaps one of them is redundant.        
+
+Database:  technological solution for storing and retrieving data both effectively and efficiently
+Dataset:  specific organization and presentation of some data for a specific reason   
+
+Data from database is eventually re-organized into dataset
+
+Database types:
+
+1. Relational databases (or SQL databases): costs and benefits of structuring
+ecosystem of data collection and management in which both the collected data and the incoming data must 
+conform with a pre-defined set of relationships between the data. 
+
+2. Unstructured databases (NoSQL): unstructured databases can be used as an interim house for data we do not have the resources to structure just now
+
+3. Distributed databases: onnected web of distributed databases across the world that offers database space with high availability and safety and bills its customers based on their actual usage.
+
+
+4. Blockchain: Blockchain is the solution when central ownership and authority are not advantageous
+
+5 ways to connect to database:
+        1. Direct connection
+        2. Web page connection
+        3. API connection
+        4. Request connection
+        5. Publicly shared.
+
+1. Direct connection
+    sqlite3_connection = splite3.connect("example.db")
+    query_text = "select * from customers"
+    df_customers = pd.read_sql_query(query_text, sqlite3_connection)
+
+    pip install mysql-connector-python
+    import mysql.connector
+    conn = mysql.connector.connect(
+        host= "hostname"
+        user= "UserName"
+        password= "my password"
+        database= "database Name"
+    )
+    cursor = conn.cursor()
+    cursor.execute("select * from orders")
+    results = cursor.fetchall()
+
+    # Close the cursor and connection
+    cursor.close()
+    conn.close()
+
+    # PostgresSQL
+    pip install psycopg2
+    import psycopg2
+    conn = psycopg2.connect(
+        host= "hostname"
+        use= "UserName"
+        password= "myPassword"
+        database= "db NAME"
+    )
+
+
+    ### Unstructured
+    # Mongodb
+    pip install pymango
+    from pymongo install MongoClient
+    client = MongoClient("link")
+
+    # Cassandra
+    pip install cassandra-driver
+    from cassandra.cluster import Cluster
+
+    #Redis
+    pip install redis
+    redis.Redis(host = "localhost", port = 6379, db = 0)
+
+2. Web page connection:
+    A web page connection is one of the methods that database owners can 
+    use when offering controlled access to their database. 
+    A great example of a web page connection can be seen and interacted 
+    with at londonair.org.uk/london/asp/datadownload.asp
+
+    The Finnhub free version is enough for us to practice accessing data through APIs. First, on the first page of finnhub.io, 
+    click on Get a Free API Key and get yourself an API key.
+
+
