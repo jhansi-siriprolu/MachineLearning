@@ -1,7 +1,7 @@
 import finnhub
 def API_access():
     stock_symbol = 'AMZN'
-    finnhub_client = finnhub.Client(api_key="cptqjo9r01qnga5ilcigcptqjo9r01qnga5ilcj0")
+    finnhub_client = finnhub.Client(api_key="key_egenrated in finnhub API")
 
     print(finnhub_client.quote(stock_symbol))
     # soup = BeautifulSoup(r.text, features = 'html.parser')
