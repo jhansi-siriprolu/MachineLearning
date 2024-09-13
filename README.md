@@ -7,4 +7,4 @@ The [KaggleCompetitions](KaggleCompetitions) includes the notebooks used in subm
 The [NOTEBOOKS](ML/NOTEBOOKS) in ML contains the initial data preprocessing with tips and tricks.
 The [datasets](ML/data) cantains data for [NOTEBOOKS](ML/NOTEBOOKS).
 
-The [MLDeployment](MLDeployment) contains the real project with phases in building the House Price Regression Analysis Project from Udemy.
+The [MLDeployment](MLDeployment) contains the real project with phases in building the House Price Regression Analysis Project.
